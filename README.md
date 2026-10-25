@@ -298,13 +298,6 @@ Avoin tarkistuslista tiimille. Lukuja ei ole muutettu ilman lähdettä.
 - Uutiset: tilannekuva 24.10.2026 (13 uutista); live-uutisvahti on erillinen artifakti.
 - Asunnot: datassa ei vielä ole myynti-ilmoituksia eikä viimeisen 12 kuukauden kauppoja, joten vain "Myynnissä nyt" -osion tyhjä teksti on nähty.
 
-## Jatkokehitys
-
-- Oikeat kuntakohtaiset datat ja useampi hankekoko
-- Lisää todellisia hankkeita karttaan ja vertailuun
-- Sähkön hinnan laskuri
-- Kuntalaisten palautelomake
-
 ## Tekijät
 
 Vainikkalan Ritarit:
