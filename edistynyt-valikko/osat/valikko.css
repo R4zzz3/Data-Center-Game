@@ -1,0 +1,92 @@
+  /* =====================================================================
+     EDISTYNYT VALIKKO – tyylit (osa Edistynyt valikko -pakettia)
+     Käyttää pelin väritokeneita: --bg --card --line --ink --ink-soft --red
+     --on-red --green --gold --valo --varjo ja fontteja --f-display --f-body --f-sc.
+     ===================================================================== */
+
+  /* Kaavio-tokenit tietomoduuleille (neljä teemaa) */
+  :root { --chart-1: #2E6648; --chart-2: #8A621A; --chart-muted: #A8977A; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --chart-1: #7FB08A; --chart-2: #D4A64A; --chart-muted: #6F624C; }
+    :root[data-tila="edistynyt"]:not([data-theme="light"]) { --chart-1: #7FD3C8; --chart-2: #E0B85A; --chart-muted: #5E5788; }
+  }
+  :root[data-theme="dark"] { --chart-1: #7FB08A; --chart-2: #D4A64A; --chart-muted: #6F624C; }
+  :root[data-tila="edistynyt"] { --chart-1: #1E6A66; --chart-2: #8A621A; --chart-muted: #A9A0C4; }
+  :root[data-tila="edistynyt"][data-theme="dark"] { --chart-1: #7FD3C8; --chart-2: #E0B85A; --chart-muted: #5E5788; }
+
+  .edistynyt-nauha[hidden], .valikko[hidden], .ev-ilmoitus[hidden] { display: none !important; }
+  /* Pikanapit (ja pelin omat .vain-edistynyt-napit) näkyvät vain edistyneessä tilassa */
+  :root:not([data-tila="edistynyt"]) .vain-edistynyt, :root:not([data-tila="edistynyt"]) [data-ev-avaa] { display: none !important; }
+
+  /* Nauha yläpalkin alla: näkyy vain edistyneessä tilassa */
+  .edistynyt-nauha {
+    position: relative; z-index: 2; flex-shrink: 0; display: flex; justify-content: center;
+    background: var(--card); border-bottom: 1px solid var(--line);
+  }
+  .nauha-nappi {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; width: 100%;
+    justify-content: center; border: 0; background: transparent; cursor: pointer; color: var(--red);
+    font-family: var(--f-sc); font-weight: 700; font-size: .98rem; letter-spacing: .08em;
+  }
+  .nauha-nappi:hover { background: var(--bg); }
+  .nauha-nappi .tahti { color: var(--gold); }
+
+  /* Valikkopaneeli: peittää pelin sisällön yläpalkin alta */
+  .ilmoitus { z-index: 6; }
+  .valikko {
+    position: absolute; left: 0; right: 0; bottom: 0; top: 56px; z-index: 4;
+    display: flex; flex-direction: column; overflow: hidden;
+    background: radial-gradient(700px 360px at 50% -10%, var(--valo, transparent), transparent 70%), var(--bg);
+    color: var(--ink); font-family: var(--f-body);
+    animation: ev-liuku .28s ease-out;
+  }
+  @keyframes ev-liuku { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .valikko-yla {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 10px 12px 4px 16px; flex-shrink: 0;
+  }
+  .valikko-yla h2 { margin: 0; font-family: var(--f-display); font-size: 1.7rem; line-height: 1.2; color: var(--red); }
+  .valikko-yla h2 .tahti { color: var(--gold); font-family: system-ui, sans-serif; font-size: .6em; vertical-align: middle; }
+  .ev-sulje {
+    min-width: 44px; min-height: 44px; padding: 0 10px; border: 0; border-radius: 6px;
+    background: transparent; color: var(--ink); font-family: var(--f-sc); font-weight: 700;
+    font-size: .95rem; letter-spacing: .05em; cursor: pointer;
+  }
+  .ev-sulje:hover { background: var(--card); }
+  .valikko-tabs {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; flex-shrink: 0;
+    margin: 0 12px; border-bottom: 2px solid var(--line);
+  }
+  .valikko-tab {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    min-height: 56px; padding: 6px 2px; margin-bottom: -2px; border: 0; border-bottom: 3px solid transparent;
+    background: transparent; color: var(--ink-soft); cursor: pointer; border-radius: 6px 6px 0 0;
+    font-family: var(--f-sc); font-weight: 700; font-size: .86rem; letter-spacing: .05em;
+  }
+  .valikko-tab svg { width: 22px; height: 22px; }
+  .valikko-tab:hover { background: var(--card); color: var(--ink); }
+  .valikko-tab[aria-selected="true"] { color: var(--red); border-bottom-color: var(--red); background: var(--card); }
+  .valikko-runko {
+    position: relative; min-height: 0; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding: 14px 16px 32px; overscroll-behavior: contain;
+  }
+  .valikko-kuvaus { color: var(--ink-soft); font-size: .95rem; margin: 0 0 10px; }
+  .ev-sirut { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+  .ev-siru {
+    min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--card); color: var(--ink); font-family: var(--f-sc); font-weight: 700;
+    font-size: .92rem; letter-spacing: .04em; cursor: pointer;
+  }
+  .ev-siru[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+  .moduuli-isanta { min-height: 120px; }
+  .moduuli-virhe { border: 1px solid var(--red); border-radius: 4px; padding: 12px; background: var(--card); }
+  .valikko :focus-visible, .edistynyt-nauha :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* Oma ilmoitus, jos pelissä ei ole naytaIlmoitus-funktiota */
+  .ev-ilmoitus {
+    position: fixed; z-index: 7; left: 16px; right: 16px; top: 72px; max-width: 448px; margin: 0 auto;
+    background: var(--card); color: var(--ink); border: 2px solid var(--gold); border-radius: 6px;
+    font-family: var(--f-sc); font-weight: 700; letter-spacing: .05em; text-align: center; padding: 12px 16px;
+    box-shadow: 0 10px 30px var(--varjo, rgba(0, 0, 0, .2));
+  }
+  @media (prefers-reduced-motion: reduce) { .valikko { animation: none; } }
