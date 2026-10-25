@@ -1,9 +1,0 @@
-  /* Uutiset: teemojen värit (asuminen, työpaikat, politiikka, ympäristö). Muut = --ink-soft. Kaikki ≥ 5:1 korttia ja taustaa vasten. */
-  :root { --uutiset-asuminen: #9A401D; --uutiset-tyopaikat: #7A5607; --uutiset-politiikka: #3A4EA6; --uutiset-ymparisto: #48621A; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --uutiset-asuminen: #EC8F63; --uutiset-tyopaikat: #E2B24C; --uutiset-politiikka: #94A3F3; --uutiset-ymparisto: #A9C862; }
-    :root[data-tila="edistynyt"]:not([data-theme="light"]) { --uutiset-asuminen: #EC8F63; --uutiset-tyopaikat: #E2B24C; --uutiset-politiikka: #94A3F3; --uutiset-ymparisto: #A9C862; }
-  }
-  :root[data-theme="dark"] { --uutiset-asuminen: #EC8F63; --uutiset-tyopaikat: #E2B24C; --uutiset-politiikka: #94A3F3; --uutiset-ymparisto: #A9C862; }
-  :root[data-tila="edistynyt"] { --uutiset-asuminen: #9A401D; --uutiset-tyopaikat: #7A5607; --uutiset-politiikka: #3A4EA6; --uutiset-ymparisto: #48621A; }
-  :root[data-tila="edistynyt"][data-theme="dark"] { --uutiset-asuminen: #EC8F63; --uutiset-tyopaikat: #E2B24C; --uutiset-politiikka: #94A3F3; --uutiset-ymparisto: #A9C862; }
