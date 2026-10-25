@@ -307,7 +307,9 @@ Avoin tarkistuslista tiimille. Lukuja ei ole muutettu ilman lähdettä.
 
 ## Tekijät
 
-Hackathon-tiimi. Lisää tähän tiimin nimet ja yhteystieto.
-
----
-Koottu 2026-10-25 artifaktista https://claude.ai/artifact/UfoD5Df7pyNfaemDXocBMD (versio 1792919449-92f9).
+Vainikkalan Ritarit:
+- Rasmus Tarkiainen
+- Samuel Rantanen
+- Joel Peltonen
+- Valtteri Ikävalko
+- Topias Becker
