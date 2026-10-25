@@ -1,0 +1,50 @@
+  /* Varapaletti (pergamentti + kynttilänvalo). :where() = nollaspesifisyys: pelin omat tokenit voittavat aina,
+     joten tämä vaikuttaa vain peleihin, joista värimerkit puuttuvat. */
+  :where(:root) {
+    --bg: #F2E8D0;       /* pergamentti, pohja */
+    --card: #FBF6EA;     /* vellum, kortit */
+    --line: #D8C59C;     /* reunat */
+    --ink: #2B1F14;      /* teksti 13,2:1 */
+    --ink-soft: #5E4A35; /* toissijainen teksti 6,9:1 */
+    --red: #A3301C;      /* otsikot, pääpainike 5,7:1 */
+    --on-red: #FBF6EA;   /* teksti punaisella pohjalla */
+    --green: #2E6648;    /* hyöty, linkit 5,5:1 */
+    --gold: #B8892E;     /* VAIN koriste, kehykset, tarkennusrengas */
+    --mitali: #F7EEDA;
+    --valo: rgba(255, 214, 140, .22);
+    --varjo: rgba(70, 45, 20, .14);
+    --f-display: "Grenze Gotisch", "UnifrakturMaguntia", Georgia, serif;
+    --f-body: "Alegreya", Georgia, "Times New Roman", serif;
+    --f-sc: "Alegreya SC", "Alegreya", Georgia, serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :where(:root:not([data-theme="light"])) {
+      --bg: #1D1914;
+      --card: #2A241C;
+      --line: #4A3F30;
+      --ink: #EADCBC;      /* 12,9:1 */
+      --ink-soft: #BFAE8C;
+      --red: #E06A4E;      /* 5,3:1 */
+      --on-red: #1D1914;
+      --green: #7FB08A;    /* 7,1:1 */
+      --gold: #D4A64A;     /* 7,8:1 */
+      --valo: rgba(255, 170, 70, .10);
+      --varjo: rgba(0, 0, 0, .35);
+      color-scheme: dark;
+    }
+  }
+  :where(:root[data-theme="dark"]) {
+      --bg: #1D1914;
+      --card: #2A241C;
+      --line: #4A3F30;
+      --ink: #EADCBC;      /* 12,9:1 */
+      --ink-soft: #BFAE8C;
+      --red: #E06A4E;      /* 5,3:1 */
+      --on-red: #1D1914;
+      --green: #7FB08A;    /* 7,1:1 */
+      --gold: #D4A64A;     /* 7,8:1 */
+      --valo: rgba(255, 170, 70, .10);
+      --varjo: rgba(0, 0, 0, .35);
+      color-scheme: dark;
+  }

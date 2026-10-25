@@ -1,0 +1,103 @@
+  /* Velhokytkin ja velhoteema. Asennetaan vain, jos pelissä ei ole omaa #velho-kytkin-painiketta. */
+  /* ===== Edistynyt tila: velhon hattu -kytkin ===== */
+  .velho-kytkin {
+    justify-self: end; display: inline-flex; align-items: center; gap: 6px;
+    min-width: 44px; min-height: 44px; padding: 0 6px; border: 0; border-radius: 999px;
+    background: transparent; color: var(--ink); cursor: pointer;
+  }
+  .velho-kytkin:hover { background: var(--bg); }
+  .velho-hattu { width: 30px; height: 30px; overflow: visible; }
+  .hattu-kartio, .hattu-lieri { fill: var(--card); stroke: var(--ink-soft); stroke-width: 1.5; stroke-linejoin: round; transition: fill .3s; }
+  .hattu-nauha { fill: var(--ink-soft); transition: fill .3s; }
+  .hattu-tahti { fill: var(--gold); transition: fill .3s; }
+  .hattu-kipina { fill: var(--gold); opacity: 0; transform-box: fill-box; transform-origin: center; transition: opacity .3s; }
+  .kytkin-ura {
+    position: relative; width: 30px; height: 18px; border-radius: 999px; flex-shrink: 0;
+    border: 1.5px solid var(--ink-soft); background: var(--bg); transition: background-color .25s, border-color .25s;
+  }
+  .kytkin-nuppi {
+    position: absolute; top: 2px; left: 2px; width: 11px; height: 11px; border-radius: 50%;
+    background: var(--ink-soft); transition: transform .25s ease-out, background-color .25s;
+  }
+  .velho-kytkin[aria-checked="true"] .hattu-kartio,
+  .velho-kytkin[aria-checked="true"] .hattu-lieri { fill: var(--red); stroke: var(--red); }
+  .velho-kytkin[aria-checked="true"] .hattu-nauha { fill: var(--gold); }
+  .velho-kytkin[aria-checked="true"] .hattu-tahti { fill: var(--on-red); }
+  .velho-kytkin[aria-checked="true"] .hattu-kipina { opacity: 1; animation: tuike 2.4s ease-in-out infinite; }
+  .velho-kytkin[aria-checked="true"] .hattu-kipina.k2 { animation-delay: 1.2s; }
+  .velho-kytkin[aria-checked="true"] .kytkin-ura { background: var(--red); border-color: var(--red); }
+  .velho-kytkin[aria-checked="true"] .kytkin-nuppi { transform: translateX(12px); background: var(--on-red); }
+  .velho-kytkin.taikoo .velho-hattu { animation: heilahdus .6s ease-out; transform-origin: 50% 90%; }
+  @keyframes tuike { 0%, 100% { opacity: .35; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.1); } }
+  @keyframes heilahdus { 0% { transform: rotate(0); } 30% { transform: rotate(-12deg); } 60% { transform: rotate(8deg); } 100% { transform: rotate(0); } }
+
+  /* ===== Edistynyt tila: velhon teema (vaalea ja tumma) ===== */
+  :root[data-tila="edistynyt"] {
+    --bg: #E9E5F2;       /* hämärä vellum */
+    --card: #F7F5FB;
+    --line: #C9C0DE;
+    --ink: #1E1933;
+    --ink-soft: #4F4670;
+    --red: #5A3A9A;      /* taikavioletti, korvaa punaisen */
+    --on-red: #F7F5FB;
+    --green: #1E6A66;
+    --gold: #B8892E;
+    --mitali: #F1ECFA;
+    --valo: rgba(140, 110, 255, .20);
+    --varjo: rgba(40, 25, 80, .16);
+    --tahti: rgba(90, 58, 154, .55);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root[data-tila="edistynyt"]:not([data-theme="light"]) {
+      --bg: #12102A;     /* yötaivas */
+      --card: #1C1938;
+      --line: #36305E;
+      --ink: #E7E2F7;
+      --ink-soft: #B4ABD6;
+      --red: #B9A1FF;
+      --on-red: #12102A;
+      --green: #7FD3C8;
+      --gold: #E0B85A;
+      --mitali: #F1ECFA;
+      --valo: rgba(140, 110, 255, .16);
+      --varjo: rgba(0, 0, 0, .45);
+      --tahti: rgba(255, 245, 220, .8);
+      color-scheme: dark;
+    }
+  }
+  :root[data-tila="edistynyt"][data-theme="dark"] {
+      --bg: #12102A;
+      --card: #1C1938;
+      --line: #36305E;
+      --ink: #E7E2F7;
+      --ink-soft: #B4ABD6;
+      --red: #B9A1FF;
+      --on-red: #12102A;
+      --green: #7FD3C8;
+      --gold: #E0B85A;
+      --mitali: #F1ECFA;
+      --valo: rgba(140, 110, 255, .16);
+      --varjo: rgba(0, 0, 0, .45);
+      --tahti: rgba(255, 245, 220, .8);
+      color-scheme: dark;
+  }
+  /* Tähtitaivas kynttilänvalon tilalle */
+  :root[data-tila="edistynyt"] .kynttila {
+    background:
+      radial-gradient(1.4px 1.4px at 8% 12%, var(--tahti) 98%, transparent),
+      radial-gradient(1px 1px at 22% 30%, var(--tahti) 98%, transparent),
+      radial-gradient(1.6px 1.6px at 37% 9%, var(--tahti) 98%, transparent),
+      radial-gradient(1px 1px at 58% 22%, var(--tahti) 98%, transparent),
+      radial-gradient(1.4px 1.4px at 74% 7%, var(--tahti) 98%, transparent),
+      radial-gradient(1px 1px at 88% 26%, var(--tahti) 98%, transparent),
+      radial-gradient(1.2px 1.2px at 94% 58%, var(--tahti) 98%, transparent),
+      radial-gradient(1px 1px at 4% 64%, var(--tahti) 98%, transparent),
+      radial-gradient(1.4px 1.4px at 14% 88%, var(--tahti) 98%, transparent),
+      radial-gradient(1px 1px at 84% 86%, var(--tahti) 98%, transparent),
+      radial-gradient(ellipse 80% 45% at 50% 0%, var(--valo), transparent 75%);
+  }
+  :root[data-tila="edistynyt"] .kuva-leike img { filter: saturate(.9) hue-rotate(-6deg); }
+  :root[data-tila="edistynyt"] .ylapalkki .nimi::before,
+  :root[data-tila="edistynyt"] .ylapalkki .nimi::after { content: " ✦ "; color: var(--gold); font-family: system-ui, sans-serif; font-size: .7em; vertical-align: middle; }
+  body, .laite, .ylapalkki, .kortti { transition: background-color .4s ease, color .4s ease, border-color .4s ease; }
